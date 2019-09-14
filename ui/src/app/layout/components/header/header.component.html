@@ -1,10 +1,17 @@
 <nav class="navbar navbar-expand-lg fixed-top">
     <div class="navbar-brand">HoldMyBeer</div>
-    <button class="navbar-toggler" type="button" (click)="toggleSidebar()">
-        <i class="fa fa-bars text-muted" aria-hidden="true"></i>
-    </button>
+  <a routerLink="/dashboard" class="list-group-item nav-link navbar">
+    <i class="fa fa-fw fa-dashboard"></i> Dashboard
+  </a>
+
+
+  <a [routerLink]="['/forms']" class="list-group-item navbar">
+    <i class="fa fa-fw fa-edit"></i>&nbsp;
+    <span>{{ 'Forms'}}</span>
+  </a>
     <div class="collapse navbar-collapse">
         <ul class="navbar-nav ml-auto">
+
             <li class="nav-item dropdown" ngbDropdown>
                 <a href="javascript:void(0)" class="nav-link" ngbDropdownToggle>
                     <i class="fa fa-user"></i> John Smith <b class="caret"></b>
