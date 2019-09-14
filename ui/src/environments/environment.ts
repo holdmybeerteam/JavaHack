@@ -6,7 +6,8 @@ export const environment = {
   production: false,
 
   hostName: 'localhost',
-  hostPort: '8090',
+  //hostPort: '8090',
+  hostPort: '3000',
   apiPrefix: 'api/v1'
 };
 

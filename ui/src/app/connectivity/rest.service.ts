@@ -23,8 +23,12 @@ export class RestService {
     return res || { };
   }
 
-  signIn(): Observable<any> {
+  login(): Observable<any> {
     return this.http.get(Entrypoints.SIGN_IN).pipe(
       map(RestService.extractData));
+  }
+
+  register(): Observable<any> {
+    return null;
   }
 }

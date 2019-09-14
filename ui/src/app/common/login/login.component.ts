@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { routerTransition } from '../router.animations';
+import { routerTransition } from '../../router.animations';
 
 @Component({
     selector: 'app-login',
