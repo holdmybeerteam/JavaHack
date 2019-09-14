@@ -5,9 +5,10 @@
    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
     <changeSet author="mghostl" id="someUniqueId">
-        <createTable tableName="company" schemaName="java-hack">
-            <column></column>
-        </createTable>
+        <sql dbms="h2" endDelimiter=";">
+                CREATE SCHEMA JAVA_HACK
+        </sql>
+
     </changeSet>
 
 </databaseChangeLog>

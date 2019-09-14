@@ -29,4 +29,8 @@ spring:
         web-allow-others: false
 
 server:
-  port: 9000
+  port: 9001
+
+security:
+  password: admin
+  user: admin
