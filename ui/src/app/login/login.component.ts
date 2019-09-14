@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { routerTransition } from '../router.animations';
 
@@ -8,12 +8,8 @@ import { routerTransition } from '../router.animations';
     styleUrls: ['./login.component.scss'],
     animations: [routerTransition()]
 })
-export class LoginComponent implements OnInit {
-    constructor(
-      public router: Router
-    ) {}
-
-    ngOnInit() {}
+export class LoginComponent {
+    constructor(public router: Router) {}
 
     onLoggedin() {
         localStorage.setItem('isLoggedin', 'true');
