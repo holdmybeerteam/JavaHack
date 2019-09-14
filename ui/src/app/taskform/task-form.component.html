@@ -1,0 +1,36 @@
+<div style="width:800px; margin:50px auto;">
+  <div>
+    <div class="form-group">
+      <label for="inputTaskName">Название задачи</label>
+      <input type="text" class="form-control" id="inputTaskName" aria-describedby="emailHelp">
+      <small id="emailHelp" class="form-text text-muted" style="float:right">для дальнейшего быстрого навигирования</small>
+    </div>
+    <div class="form-group">
+      <tag-input id="inputTags" name="inputTagsForm" [(ngModel)]='items' theme='dark'></tag-input>
+    </div>
+    <div class="form-group">
+      <textarea
+                [(ngModel)]='inputTaskDescriptionModel'
+                id="inputTaskDescription" style="width:800px" placeholder="Описание в свободной форме"></textarea>
+    </div>
+    <div class="form-group">
+
+      <div id=" " class="header">
+        <h4>Пункты приемки</h4>
+        <input type="text" id="myInput" placeholder="Title...">
+        <span onclick="newElement()" class="addBtn">Add</span>
+      </div>
+
+      <ul id="myUL">
+        <li>Hit the gym</li>
+        <li class="checked">Pay bills</li>
+        <li>Meet George</li>
+        <li>Buy eggs</li>
+        <li>Read a book</li>
+        <li>Organize office</li>
+      </ul>
+    </div>
+    <button class="btn btn-primary" style="float:right"
+          (click)="click()">Создать задачу</button>
+  </div>
+</div>
