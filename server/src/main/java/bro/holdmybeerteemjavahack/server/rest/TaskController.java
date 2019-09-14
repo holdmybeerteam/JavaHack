@@ -11,7 +11,7 @@ import java.math.BigInteger;
 import java.util.List;
 
 @RestController
-@RequestMapping("/rest-api/tasks")
+@RequestMapping("/rest-api/task")
 @CrossOrigin
 public class TaskController
 {
@@ -34,8 +34,24 @@ public class TaskController
 
 	@PostMapping
 	public ResponseEntity<BigInteger> createTask(@RequestBody Task task) {
-		return new ResponseEntity<>(taskService.createTask(task), HttpStatus.OK);
+		return new ResponseEntity<>(taskService.saveTask(task), HttpStatus.OK);
 	}
 
+	@PostMapping("/approve")
+	public ResponseEntity approve(@RequestParam("taskId") BigInteger taskId) {
+		Task updatedTask = taskService.getTask(taskId);
+		updatedTask.setIsDone(true);
+		taskService.saveTask(updatedTask);
+		return new ResponseEntity(HttpStatus.OK);
+	}
+
+	@PostMapping("/assign")
+	public ResponseEntity setWorker(@RequestParam("taskId") BigInteger taskId) {
+		Task updatedTask = taskService.getTask(taskId);
+		BigInteger workerId = new BigInteger(""); //TODO(get workerId by auth token)
+		updatedTask.setWorkerId(workerId);
+		taskService.saveTask(updatedTask);
+		return new ResponseEntity(HttpStatus.OK);
+	}
 
 }

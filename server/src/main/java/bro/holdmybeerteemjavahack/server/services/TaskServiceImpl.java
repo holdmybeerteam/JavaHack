@@ -17,8 +17,14 @@ public class TaskServiceImpl implements TaskService
 
 	@Transactional
 	@Override
-	public BigInteger createTask(Task task)
+	public BigInteger saveTask(Task task)
 	{
 		return taskRepository.save(task).getId();
 	}
+
+	@Override
+	public Task getTask(BigInteger taskId) {
+		return taskRepository.getOne(taskId);
+	}
+
 }

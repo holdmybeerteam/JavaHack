@@ -19,5 +19,10 @@ public class Task
 	@Column(name = "description")
 	private String description;
 
+	@Column(name = "is_done")
+	private Boolean isDone = false;
+
+	@Column(name = "worker_id")
+	private BigInteger workerId = null;
 
 }

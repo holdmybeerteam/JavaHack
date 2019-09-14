@@ -9,9 +9,8 @@
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true"/>
             </column>
-            <column name="full_name" type="VARCHAR(255)"/>
-            <column name="account_number" type="VARCHAR(255)"/>
-            <column name="company_id" type="BIGINT"/>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="is_done" type="BOOLEAN"/>
             <column name="worker_id" type="BIGINT"/>
         </createTable>
 

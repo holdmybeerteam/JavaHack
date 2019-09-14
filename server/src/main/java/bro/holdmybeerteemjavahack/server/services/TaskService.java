@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface TaskService
 {
-	BigInteger createTask(Task task);
+	BigInteger saveTask(Task task);
+	Task getTask(BigInteger taskId);
 }

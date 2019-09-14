@@ -1,6 +1,6 @@
 package bro.holdmybeerteemjavahack.server.model;
 
-abstract class User
+public abstract class User
 {
 
 }

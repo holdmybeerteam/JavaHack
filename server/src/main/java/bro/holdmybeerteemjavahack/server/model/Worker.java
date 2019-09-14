@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.math.BigInteger;
+import java.util.List;
 
 @Data
 @Entity
@@ -20,5 +21,10 @@ public class Worker extends User
 
 	@Column(name = "full_name", length = 255, nullable = false)
 	private String fullName = null;
+
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinTable(schema = "java_hack", name = "task")
+	@JoinColumn(name = "task_id")
+	private List<Task> tasks;
 
 }
