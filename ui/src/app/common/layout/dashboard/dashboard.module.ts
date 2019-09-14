@@ -9,15 +9,13 @@ import {
     NotificationComponent,
     ChatComponent
 } from './components';
-import { StatModule } from '../../shared';
 
 @NgModule({
     imports: [
         CommonModule,
         NgbCarouselModule,
         NgbAlertModule,
-        DashboardRoutingModule,
-        StatModule
+        DashboardRoutingModule
     ],
     declarations: [
         DashboardComponent,
