@@ -5,13 +5,14 @@ import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.DependsOn;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
+import javax.sql.DataSource;
 
 @EnableWebSecurity
 @ConfigurationProperties(prefix = "security")
@@ -23,34 +24,48 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Getter
 	@Setter
 	private String user;
+	private final DataSource dataSource;
+
+	public SecurityConfiguration(DataSource dataSource)
+	{
+		this.dataSource = dataSource;
+	}
+
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception
+	{
+
+//		auth.jdbcAuthentication()
+//				.dataSource(dataSource)
+//				.passwordEncoder(new BCryptPasswordEncoder())
+//				.usersByUsernameQuery("select username, password from java_hack.user where username=?")
+//				.authoritiesByUsernameQuery("select u.username, a.role from java_hack.user u, java_hack.authority a where u.username=? and u.user_id = a.user_id");
+		auth.jdbcAuthentication()
+				.withDefaultSchema()
+				.dataSource(dataSource)
+				.withUser("Company").password(passwordEncoder().encode("pass")).roles("COMPANY")
+				.and()
+				.withUser("Worker").password(passwordEncoder().encode("pass")).roles("WORKER");
+	}
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http
-				.authorizeRequests()
-				.antMatchers("/rest-api/**").permitAll()
-				.anyRequest().authenticated()
+		http.authorizeRequests()
+				.antMatchers("/console/**", "/login/**", "/signup/**").permitAll()
+				.antMatchers("/rest-api/**").hasAnyAuthority("ROLE_COMPANY", "ROLE_WORKER")
 				.and()
-				.csrf().disable();
-//				.and()
-//////				.formLogin()
-//////				.loginPage("/login")
-////				.permitAll()
-//				.and()
-//				.logout()
-//				.permitAll();
-	}
+				.httpBasic();
 
-	@Bean
-	@DependsOn(value = "securityConfig")
-	@Override
-	public UserDetailsService userDetailsService() {
+		http.csrf()
+				.ignoringAntMatchers("/console/**", "/signup/**", "/login/**", "/rest-api/**");
+		http.headers()
+				.frameOptions()
+				.sameOrigin();
 
-		// TODO change encoder, separate credentials in properties file, encode password
-		return new InMemoryUserDetailsManager(User.withDefaultPasswordEncoder()
-				.username(this.user)
-				.password(this.password)
-				.roles("USER")
-				.build());
 	}
+@Bean
+	PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+}
 }
 

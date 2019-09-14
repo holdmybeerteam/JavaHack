@@ -8,8 +8,8 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name = "Worker", schema = "JAVA_HACK")
-public class Worker extends User
+@Table(name = "IndividualWorker", schema = "JAVA_HACK")
+public class IndividualWorker extends Client
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

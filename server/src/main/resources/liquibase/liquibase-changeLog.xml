@@ -6,4 +6,7 @@
 
     <include file="init.xml" relativeToChangelogFile="true"/>
     <include file="create-company.xml" relativeToChangelogFile="true"/>
+    <include file="create-task.xml" relativeToChangelogFile="true"/>
+    <include file="create-worker.xml" relativeToChangelogFile="true"/>
+<!--    <include file="create-user.xml" relativeToChangelogFile="true"/>-->
 </databaseChangeLog>
