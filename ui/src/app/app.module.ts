@@ -7,6 +7,8 @@ import {CommonModule} from "@angular/common";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {HttpClientModule} from "@angular/common/http";
 import {AuthGuard} from "./common/shared/guard";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {TagInputModule} from "ngx-chips";
 
 @NgModule({
   declarations: [
@@ -17,7 +19,10 @@ import {AuthGuard} from "./common/shared/guard";
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    TagInputModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]
