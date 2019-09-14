@@ -1,33 +1,32 @@
-<nav class="navbar navbar-expand-lg fixed-top">
-  <div class="navbar-brand">HoldMyBeer</div>
+<nav class="navbar navbar-expand-lg navbar-light">
+  <div class="navbar-brand">Р-Р-РискХеджер</div>
   <a routerLink="/dashboard" class="list-group-item nav-link navbar">
-    <i class="fa fa-fw fa-dashboard"></i> Dashboard
+    <i class="fa fa-fw fa-dashboard"></i> Мои задачи
   </a>
 
-
-  <a [routerLink]="['/forms']" class="list-group-item navbar">
+  <a [routerLink]="['/new-task']" class="list-group-item navbar">
     <i class="fa fa-fw fa-edit"></i>&nbsp;
-    <span>{{ 'Forms'}}</span>
+    <span>Создать задачу</span>
   </a>
   <div class="collapse navbar-collapse">
     <ul class="navbar-nav ml-auto">
 
       <li class="nav-item dropdown" ngbDropdown>
         <a href="javascript:void(0)" class="nav-link" ngbDropdownToggle>
-          <i class="fa fa-user"></i> John Smith <b class="caret"></b>
+          <i class="fa fa-user"></i> Лев Зильберман <b class="caret"></b>
         </a>
         <div class="dropdown-menu-right" ngbDropdownMenu>
           <a class="dropdown-item" href="javascript:void(0)">
-            <i class="fa fa-fw fa-user"></i> {{ 'Profile'}}
+            <i class="fa fa-fw fa-user"></i> {{ 'Профиль'}}
           </a>
           <a class="dropdown-item" href="javascript:void(0)">
-            <i class="fa fa-fw fa-envelope"></i> {{ 'Inbox'}}
+            <i class="fa fa-fw fa-envelope"></i> {{ 'Сообщения'}}
           </a>
           <a class="dropdown-item" href="javascript:void(0)">
-            <i class="fa fa-fw fa-gear"></i> {{ 'Settings'}}
+            <i class="fa fa-fw fa-gear"></i> {{ 'Настройки'}}
           </a>
           <a class="dropdown-item" [routerLink]="['/login']" (click)="onLoggedout()">
-            <i class="fa fa-fw fa-power-off"></i> {{ 'Log Out'}}
+            <i class="fa fa-fw fa-power-off"></i> {{ 'Выйти'}}
           </a>
         </div>
       </li>
