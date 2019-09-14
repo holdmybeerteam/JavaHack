@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import {CommonModule} from "@angular/common";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {HttpClientModule} from "@angular/common/http";
-import {AuthGuard} from "./shared/guard";
+import {AuthGuard} from "./common/shared/guard";
 
 @NgModule({
   declarations: [
