@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import {Component, Input, OnInit} from '@angular/core';
+import {NavigationEnd, Router} from '@angular/router';
+import {Task} from '../../dashboard/task';
+import {TaskAction, TaskInfo} from "../../dashboard/components/timeline/task-info";
 
 @Component({
     selector: 'app-header',
@@ -8,6 +10,15 @@ import { Router, NavigationEnd } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
     public pushRightClass: string;
+
+    @Input()
+    tasks: Task[] = [
+        new Task(1, 'Задача 1',
+            [
+                new TaskInfo('Title', 'Description',TaskAction.ClientSubmitted, new Date())
+            ]
+        )
+    ];
 
     constructor(public router: Router) {
         this.router.events.subscribe(val => {

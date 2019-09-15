@@ -9,24 +9,26 @@ import {AuthGuard} from "./common/shared/guard";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {TagInputModule} from "ngx-chips";
 import {TextareaAutosizeModule} from 'ngx-textarea-autosize';
+import {MatDialogModule} from "@angular/material";
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    CommonModule,
-    BrowserModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    AppRoutingModule,
-    TagInputModule,
-    FormsModule,
-    ReactiveFormsModule,
-    TextareaAutosizeModule
-  ],
-  providers: [AuthGuard],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent
+    ],
+    imports: [
+        CommonModule,
+        BrowserModule,
+        BrowserAnimationsModule,
+        HttpClientModule,
+        AppRoutingModule,
+        TagInputModule,
+        FormsModule,
+        ReactiveFormsModule,
+        TextareaAutosizeModule,
+        MatDialogModule
+    ],
+    providers: [AuthGuard],
+    bootstrap: [AppComponent]
 })
 export class AppModule {
 }
